@@ -13,5 +13,5 @@ def make_response(filename, status_code = 200):
     return res
 
 def load_json(filename):
-    with open('{dirname}/{filename}'.format(dirname=os.path.dirname(__file__), filename=filename)) as jsonfile:
+    with open('{dirname}/test_responses/{filename}'.format(dirname=os.path.dirname(__file__), filename=filename)) as jsonfile:
         return json.load(jsonfile)

@@ -6,8 +6,7 @@ import os
 import requests
 
 from .helpers import make_response, load_json
-from youtube_transcript_channel_api.transcripts import YoutubePlaylistTranscripts
-from youtube_transcript_channel_api.tes import hello
+from youtube_transcript_channel_api.transcripts import YoutubePlaylistTranscripts, YoutubeChannelTranscripts
 
 class TestYoutubePlaylistTranscripts(TestCase):
     base_package = __module__.split('.')[0]
@@ -39,9 +38,20 @@ class TestYoutubePlaylistTranscripts(TestCase):
         mock_get_transcript.assert_called()
         assert len(res) == 1
         assert len(errors) == 0 
-        
-    @patch(f'{base_package}.hello.helloworld', return_value = 'ok')
-    def test_hello(self, mock_hello):
-        x = hello()
-        print(x.helloworld())
-        assert True 
+       
+    
+    @patch(f'{base_package}.transcripts.requests.get', side_effect=[make_response('TheGreatWar_Search_YDAPI_response.json'), make_response('TheGreatWar_Channel_YDAPI_response.json'), make_response('jBnWZijMbMY_YDAPI_response.json')])
+    def test_get_channel_playlist(self, mock_api_get):
+        getter = YoutubeChannelTranscripts('The Great War', 'key')
+        mock_api_get.assert_called()
+        assert getter.channel_name == 'The Great War'
+        assert getter.pid == 'UUUcyEsEjhPEDf69RRVhRh4A'
+        assert len(getter.video) == 7 
+    
+    @patch(f'{base_package}.transcripts.requests.get', side_effect=[make_response('TheGreatWar_Search_YDAPI_response.json'), make_response('TheGreatWar_Channel_YDAPI_response.json'), make_response('jBnWZijMbMY_YDAPI_response.json')])
+    def test_get_channel_playlist_inaccurate_name(self, mock_api_get):
+        getter = YoutubeChannelTranscripts('Tr', 'key')
+        mock_api_get.assert_called()
+        assert getter.channel_name == 'The Great War'
+        assert getter.pid == 'UUUcyEsEjhPEDf69RRVhRh4A'
+        assert len(getter.video) == 7 

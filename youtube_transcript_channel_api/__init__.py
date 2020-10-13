@@ -1,2 +1,1 @@
-from .transcripts import YoutubePlaylistTranscripts
-from .tes import hello 
+from .transcripts import YoutubePlaylistTranscripts, YoutubeChannelTranscripts

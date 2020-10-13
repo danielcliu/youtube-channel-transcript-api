@@ -1,0 +1,51 @@
+{
+   "kind":"youtube#channelListResponse",
+   "etag":"13VDxX9-XhiuyZcUNX50TI8hpd0",
+   "pageInfo":{
+      "resultsPerPage":1
+   },
+   "items":[
+      {
+         "kind":"youtube#channel",
+         "etag":"0gRCHd7DUHY397E3Z9KlZUAdYwE",
+         "id":"UCUcyEsEjhPEDf69RRVhRh4A",
+         "snippet":{
+            "title":"The Great War",
+            "description":"The Great War covers the First World War from 1914 to 1923 – in real time. Every other week, Jesse Alexander cover the important events that influenced the world 100 years ago. Form 2014 - 2018, Indiana Neidell followed the main events of what is classically considered as World War 1 on a weekly basis. \n\nYou can support our show on Patreon: http://patreon.com/thegreatwar\n\n___\n“The Great War” is operated and owned by our independent production company:\nRTH - Real Time History GmbH\nReichenberger Straße 124\n10999 Berlin\n\nVideos published between 2014 - 2018 Contain material licensed from British Pathé and are copyrighted by Mediakraft Networks GmbH.",
+            "customUrl":"thegreatwarseries",
+            "publishedAt":"2014-05-14T12:11:43Z",
+            "thumbnails":{
+               "default":{
+                  "url":"https://yt3.ggpht.com/a/AATXAJw8HpTpERT7OTHIW9hjmSOne_ht2nkTH1OxZwlTVw=s88-c-k-c0xffffffff-no-rj-mo",
+                  "width":88,
+                  "height":88
+               },
+               "medium":{
+                  "url":"https://yt3.ggpht.com/a/AATXAJw8HpTpERT7OTHIW9hjmSOne_ht2nkTH1OxZwlTVw=s240-c-k-c0xffffffff-no-rj-mo",
+                  "width":240,
+                  "height":240
+               },
+               "high":{
+                  "url":"https://yt3.ggpht.com/a/AATXAJw8HpTpERT7OTHIW9hjmSOne_ht2nkTH1OxZwlTVw=s800-c-k-c0xffffffff-no-rj-mo",
+                  "width":800,
+                  "height":800
+               }
+            },
+            "localized":{
+               "title":"The Great War",
+               "description":"The Great War covers the First World War from 1914 to 1923 – in real time. Every other week, Jesse Alexander cover the important events that influenced the world 100 years ago. Form 2014 - 2018, Indiana Neidell followed the main events of what is classically considered as World War 1 on a weekly basis. \n\nYou can support our show on Patreon: http://patreon.com/thegreatwar\n\n___\n“The Great War” is operated and owned by our independent production company:\nRTH - Real Time History GmbH\nReichenberger Straße 124\n10999 Berlin\n\nVideos published between 2014 - 2018 Contain material licensed from British Pathé and are copyrighted by Mediakraft Networks GmbH."
+            },
+            "country":"US"
+         },
+         "contentDetails":{
+            "relatedPlaylists":{
+               "likes":"",
+               "favorites":"",
+               "uploads":"UUUcyEsEjhPEDf69RRVhRh4A",
+               "watchHistory":"HL",
+               "watchLater":"WL"
+            }
+         }
+      }
+   ]
+}

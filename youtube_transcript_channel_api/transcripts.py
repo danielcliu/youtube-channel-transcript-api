@@ -37,15 +37,17 @@ class YoutubePlaylistTranscripts():
     def get_transcripts(self, languages=['en'], proxies=None, cookies=None, just_text=False):
         videos_that_erred = []
         video_data = {}
+        print(self.video)
         for video in self.video:
-            transcript = self.get_transcript(videos_that_erred, languages, proxies, cookies, just_text) 
-            video_data += transcript
+            transcript = self._get_transcript(video, videos_that_erred, languages, proxies, cookies, just_text) 
+            print(video_data)
+            video_data.update(transcript)
         return video_data, videos_that_erred
 
     def write_transcripts(self, languages=['en'], proxies=None, cookies=None, just_text=False):
         videos_that_erred = []
         for video in self.video:
-            transcript = self.get_transcript(videos_that_erred, languages, proxies, cookies, just_text) 
+            transcript = self._get_transcript(videos_that_erred, languages, proxies, cookies, just_text) 
             filepath=f'YoutubeChannelTranscripts/{self.name.replace(" ", "_")}/{video[0].replace(" ", "_")}.json'
             os.makedirs(os.path.dirname(filepath), exist_ok=True)
             with open(filepath, 'w') as f:
@@ -53,7 +55,7 @@ class YoutubePlaylistTranscripts():
 
         return videos_that_erred
 
-    def get_transcript(self, videos_that_erred, languages, proxies, cookies, just_text):
+    def _get_transcript(self, video, videos_that_erred, languages, proxies, cookies, just_text):
         try:
             transcript = YouTubeTranscriptApi.get_transcript(video[1], languages=languages, proxies=proxies, cookies=cookies)
             if just_text:
@@ -67,8 +69,8 @@ class YoutubePlaylistTranscripts():
 
 class YoutubeChannelTranscripts(YoutubePlaylistTranscripts):
     def __init__(self, name, key):
-        channel_name, pid = self._get_channel_playlist(name, key)
-        super().__init__(channel_name, pid, key)
+        self.channel_name, self.pid = self._get_channel_playlist(name, key)
+        super().__init__(self.channel_name, self.pid, key)
 
     def _get_channel_playlist(self, name, key):
         channel_id = self._get_channel_id(name, key)
