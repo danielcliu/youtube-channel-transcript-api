@@ -6,7 +6,7 @@ import os
 import requests
 
 from .helpers import make_response, load_json
-from youtube_transcript_channel_api.transcripts import YoutubePlaylistTranscripts, YoutubeChannelTranscripts
+from youtube_channel_transcript_api.transcripts import YoutubePlaylistTranscripts, YoutubeChannelTranscripts
 
 class TestYoutubePlaylistTranscripts(TestCase):
     base_package = __module__.split('.')[0]
