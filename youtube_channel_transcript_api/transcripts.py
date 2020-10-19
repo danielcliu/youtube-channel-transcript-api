@@ -37,17 +37,16 @@ class YoutubePlaylistTranscripts():
     def get_transcripts(self, languages=['en'], proxies=None, cookies=None, just_text=False):
         videos_that_erred = []
         video_data = {}
-        print(self.video)
         for video in self.video:
             transcript = self._get_transcript(video, videos_that_erred, languages, proxies, cookies, just_text) 
-            print(video_data)
-            video_data.update(transcript)
+            if transcript: 
+                video_data.update(transcript)
         return video_data, videos_that_erred
 
     def write_transcripts(self, languages=['en'], proxies=None, cookies=None, just_text=False):
         videos_that_erred = []
         for video in self.video:
-            transcript = self._get_transcript(videos_that_erred, languages, proxies, cookies, just_text) 
+            transcript = self._get_transcript(video, videos_that_erred, languages, proxies, cookies, just_text) 
             filepath=f'YoutubeChannelTranscripts/{self.name.replace(" ", "_")}/{video[0].replace(" ", "_")}.json'
             os.makedirs(os.path.dirname(filepath), exist_ok=True)
             with open(filepath, 'w') as f:
@@ -56,6 +55,7 @@ class YoutubePlaylistTranscripts():
         return videos_that_erred
 
     def _get_transcript(self, video, videos_that_erred, languages, proxies, cookies, just_text):
+        transcript_json = None
         try:
             transcript = YouTubeTranscriptApi.get_transcript(video[1], languages=languages, proxies=proxies, cookies=cookies)
             if just_text:
