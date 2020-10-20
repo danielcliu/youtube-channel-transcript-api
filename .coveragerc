@@ -1,0 +1,5 @@
+[run]
+source = youtube_channel_transcript_api
+
+[report]
+show_missing=True
