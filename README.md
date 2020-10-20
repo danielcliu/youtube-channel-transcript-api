@@ -1,19 +1,19 @@
 # youtube-transcript-channel-api
 [![Build Status](https://travis-ci.org/danielcliu/youtube-channel-transcript-api.svg?branch=master)](https://travis-ci.com/github/danielcliu/youtube-channel-transcript-api) [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](http://opensource.org/licenses/MIT)
 
-Expand upon the youtube-transcript-api and allow users to easily request all of a channel's (and maybe a playlist's) video captions. Will require use of [Youtube Data API v3](https://developers.google.com/youtube/v3).
+Expand upon the [youtube-transcript-api](https://github.com/jdepoix/youtube-transcript-api) and allow users to easily request all of a channel's (or a playlist's) video caption data. This will require use of [Youtube Data API v3](https://developers.google.com/youtube/v3).
 
 ## API
 
 Integrate this package into your python 3.6+ application. It is built as a sort of expansion [youtube-transcript-api](https://github.com/jdepoix/youtube-transcript-api). For that reason, that package's warnings/use cases mostly apply to this project as well. 
 
-The package revolves around creating YoutubeChannelTranscript objects, and then using them to obtain the caption data from YouTube. This package also is built on the YouTube Data API v3, which means to use this you will need to setup your own account and use your own API Key. See [here](https://developers.google.com/youtube/v3/getting-started) for directions how to setup your account if you don't have one.
+The package revolves around creating YoutubeChannelTranscript objects, and then using them to obtain all of the caption data from that channel's videos. This package also is built on the YouTube Data API v3, which means to use this you will need to setup your own account and use your own API Key. See [here](https://developers.google.com/youtube/v3/getting-started) for directions how to setup your account if you don't have one.
 
 To initialize a YoutubeChannelTranscipts object, you would call like
 ```python
 YoutubeChannelTranscripts(<youtube channel name>, <youtube data api key>)
 ```
-You can then either call `get_transcripts()` to return a dictionary of all transcripts and a list of videos that errored, or you can call `write_transcripts()` to write out all of the transcripts to json files at the filepath location. `write_transcripts()` will create a directory `/YoutubeChannelTranscripts` and then write each videos transcript in ints own, seperate json file.
+You can then either call `get_transcripts()` to return a dictionary of all transcripts and a list of videos that errored, or you can call `write_transcripts()` to write out all of the transcripts to json files at the filepath location. `write_transcripts()` will create a directory `/YoutubeChannelTranscripts` and then write each videos transcript in its own, seperate json file.
 
 Here is an example where the package fetches all transcript data from a channel:
 
