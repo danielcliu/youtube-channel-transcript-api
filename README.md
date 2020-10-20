@@ -1,19 +1,20 @@
 # youtube-transcript-channel-api
-[![Build Status](https://travis-ci.com/github/danielcliu/youtube-channel-transcript-api.svg)](https://travis-ci.com/github/danielcliu/youtube-channel-transcript-api) [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](http://opensource.org/licenses/MIT)
-Expand upon the youtube-transcript-api and allow users to easily request all of a channel's (and maybe a playlist's) video captions. Will require use of Youtube Data API v3.
+[![Build Status](https://travis-ci.org/danielcliu/youtube-channel-transcript-api.svg?branch=master)](https://travis-ci.com/github/danielcliu/youtube-channel-transcript-api) [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](http://opensource.org/licenses/MIT)
+Expand upon the youtube-transcript-api and allow users to easily request all of a channel's (and maybe a playlist's) video captions. Will require use of [Youtube Data API v3](https://developers.google.com/youtube/v3).
 
 ## API
 
 Integrate this package into your python 3.6+ application. It is built as a sort of expansion [youtube-transcript-api](https://github.com/jdepoix/youtube-transcript-api). For that reason, that package's warnings/use cases mostly apply to this project as well. 
 
-The package revolves around creating YoutubeChannelTranscript objects. This package also is built on the YouTube Data API v3, which means to use this you will need to setup your own account and use your own API Key. See (here)[https://developers.google.com/youtube/v3/getting-started] for directions how to setup your account if you don't have one.
+The package revolves around creating YoutubeChannelTranscript objects, and then using them to obtain the caption data from YouTube. This package also is built on the YouTube Data API v3, which means to use this you will need to setup your own account and use your own API Key. See [here](https://developers.google.com/youtube/v3/getting-started) for directions how to setup your account if you don't have one.
 
+To initialize a YoutubeChannelTranscipts object, you would call like
 ```python
-YoutubeChannelTranscript(<youtube channel name>, <youtube data api key>)
+YoutubeChannelTranscripts(<youtube channel name>, <youtube data api key>)
 ```
 You can then either call `get_transcripts()` to return a dictionary of all transcripts and a list of videos that errored, or you can call `write_transcripts()` to write out all of the transcripts to json files at the filepath location. `write_transcripts()` will create a directory `/YoutubeChannelTranscripts` and then write each videos transcript in ints own, seperate json file.
 
-The easiest way to do so is to execute:
+Here is an example where the package fetches all transcript data from a channel:
 
 ```python
 
@@ -67,7 +68,7 @@ In this instance, `videos_data` will look like
 And `videos_errored` will look like
 
 ```python
-[ ['video title 1', 'video id 1'], ['video title 2', 'video id 2'] ]
+[ ['bad video title 1', 'bad video id 1'], ['bad video title 2', 'bad video id 2'] ]
 ```
 ### Parameters 
 Both `get_transcripts()` and `write_transcripts()` have the same, optional parameters.
@@ -108,7 +109,7 @@ channel_getter = YoutubeChannelTranscripts('A Youtube Channel', 'Youtube Data AP
 videos_data, videos_errored = channel_getter.get_transcripts(proxies={"http": "http://user:pass@domain:port", "https": "https://user:pass@domain:port"})  
 ```  
   
-As the `proxies` dict is passed on to the `requests.get(...)` call, it follows the [format used by the requests library](http://docs.python-requests.org/en/master/user/advanced/#proxies).  
+As the `proxies` dict is passed on to the `requests.get(...)` call, it follows the [format used by the requests library](https://requests.readthedocs.io/en/master/user/advanced/#proxies).  
 
 #### Just Text
 You can specify for the responses to not include timestamp information in the `videos_data` returned, or in the files written out to memory. By default, `just_text` is set to `False`
@@ -117,13 +118,12 @@ You can specify for the responses to not include timestamp information in the `v
 ```python  
 channel_getter = YoutubeChannelTranscripts('A Youtube Channel', 'Youtube Data API Key here')
 
-videos_data, videos_errored = channel_getter.get_transcripts(just_text=False)
-
+videos_data, videos_errored = channel_getter.get_transcripts(just_text=True)
 
 videos_data, videos_errored = channel_getter.get_transcripts()
 ```
 
-In this instance, `videos_data` will now look like
+In this example, `videos_data` will now look like
 
 ```python
 {
