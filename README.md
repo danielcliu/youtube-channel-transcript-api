@@ -1,5 +1,6 @@
 # youtube-transcript-channel-api
 [![Build Status](https://travis-ci.org/danielcliu/youtube-channel-transcript-api.svg?branch=master)](https://travis-ci.com/github/danielcliu/youtube-channel-transcript-api) [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](http://opensource.org/licenses/MIT)
+
 Expand upon the youtube-transcript-api and allow users to easily request all of a channel's (and maybe a playlist's) video captions. Will require use of [Youtube Data API v3](https://developers.google.com/youtube/v3).
 
 ## API
@@ -119,8 +120,6 @@ You can specify for the responses to not include timestamp information in the `v
 channel_getter = YoutubeChannelTranscripts('A Youtube Channel', 'Youtube Data API Key here')
 
 videos_data, videos_errored = channel_getter.get_transcripts(just_text=True)
-
-videos_data, videos_errored = channel_getter.get_transcripts()
 ```
 
 In this example, `videos_data` will now look like
