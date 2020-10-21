@@ -73,7 +73,7 @@ And `videos_errored` will look like
 ```
 ### Write Transcripts
 
-The function `write_transcripts()` will write each transcript out to file in json format. It has one required parameter, `file_path`, which is where the function will create the directories and files necessary. It writes all the files to the same location. Each file is named after the video's title. It returns a llist of videos that have errored, in the format above..
+The function `write_transcripts()` will write each transcript out to file in json format. It has one required parameter, `file_path`, which is where the function will create the directories and files necessary. It writes all the files to the same location. Each file is named after the video's title. It returns a list of videos that have errored, in the format above.
 
 An example would be
 
