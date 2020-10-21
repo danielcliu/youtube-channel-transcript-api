@@ -13,9 +13,9 @@ To initialize a YoutubeChannelTranscipts object, you would call like
 ```python
 YoutubeChannelTranscripts(<youtube channel name>, <youtube data api key>)
 ```
-You can then either call `get_transcripts()` to return a dictionary of all transcripts and a list of videos that errored, or you can call `write_transcripts()` to write out all of the transcripts to json files at the filepath location. `write_transcripts()` will create a directory `/YoutubeChannelTranscripts` and then write each videos transcript in its own, seperate json file.
+You can then either call `get_transcripts()` to return a dictionary of all transcripts and a list of videos that errored, or you can call `write_transcripts()` to write out all of the transcripts to json files at the filepath location.
 
-Here is an example where the package fetches all transcript data from a channel:
+Here is an example where the package fetches all transcript data from a channel using `get_transcripts()`:
 
 ```python
 
@@ -71,7 +71,22 @@ And `videos_errored` will look like
 ```python
 [ ['bad video title 1', 'bad video id 1'], ['bad video title 2', 'bad video id 2'] ]
 ```
-### Parameters 
+### Write Transcripts
+
+The function `write_transcripts()` will write each transcript out to file in json format. It has one required parameter, `file_path`, which is where the function will create the directories and files necessary. It writes all the files to the same location. Each file is named after the video's title. It returns a llist of videos that have errored, in the format above..
+
+An example would be
+
+```python
+
+from youtube_channel_transcript_api import YoutubeChannelTranscripts
+
+channel_getter = YoutubeChannelTranscripts('A Youtube Channel', 'Youtube Data API Key here')
+
+videos_errored = channel_getter.write_transcripts(file_path = '/home/user/blah/here/') # don't forget to have that last /
+```
+
+### Shared Parameters 
 Both `get_transcripts()` and `write_transcripts()` have the same, optional parameters.
 
 #### Languages
