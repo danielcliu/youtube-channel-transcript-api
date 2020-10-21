@@ -43,11 +43,11 @@ class YoutubePlaylistTranscripts():
                 video_data.update(transcript)
         return video_data, videos_that_erred
 
-    def write_transcripts(self, languages=['en'], proxies=None, cookies=None, just_text=False):
+    def write_transcripts(self, file_path, languages=['en'], proxies=None, cookies=None, just_text=False):
         videos_that_erred = []
         for video in self.video:
             transcript = self._get_transcript(video, videos_that_erred, languages, proxies, cookies, just_text) 
-            filepath=f'YoutubeChannelTranscripts/{self.name.replace(" ", "_")}/{video[0].replace(" ", "_")}.json'
+            filepath=f'{file_path}{video[0].replace(" ", "_")}.json'
             os.makedirs(os.path.dirname(filepath), exist_ok=True)
             with open(filepath, 'w') as f:
                 json.dump(transcript, f, indent=4)
