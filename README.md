@@ -83,7 +83,7 @@ from youtube_channel_transcript_api import YoutubeChannelTranscripts
 
 channel_getter = YoutubeChannelTranscripts('A Youtube Channel', 'Youtube Data API Key here')
 
-videos_errored = channel_getter.write_transcripts(file_path = '/home/user/blah/here/') # don't forget to have that last /
+videos_errored = channel_getter.write_transcripts('/home/user/blah/here/') # don't forget to have that last /
 ```
 
 ### Shared Parameters 
