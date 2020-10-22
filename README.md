@@ -1,4 +1,4 @@
-# youtube-transcript-channel-api
+# Youtube Transcript API for Channels and Playlists
 [![Build Status](https://travis-ci.org/danielcliu/youtube-channel-transcript-api.svg?branch=master)](https://travis-ci.com/github/danielcliu/youtube-channel-transcript-api) [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](http://opensource.org/licenses/MIT) [![image](https://img.shields.io/pypi/v/youtube-channel-transcript-api.svg)](https://pypi.org/project/youtube-channel-transcript-api/) 
 
 Expand upon the [youtube-transcript-api](https://github.com/jdepoix/youtube-transcript-api) and allow users to easily request all of a channel's (or a playlist's) video caption data. This will require use of [Youtube Data API v3](https://developers.google.com/youtube/v3).
