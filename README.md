@@ -1,18 +1,40 @@
 # youtube-transcript-channel-api
-[![Build Status](https://travis-ci.org/danielcliu/youtube-channel-transcript-api.svg?branch=master)](https://travis-ci.com/github/danielcliu/youtube-channel-transcript-api) [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](http://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.org/danielcliu/youtube-channel-transcript-api.svg?branch=master)](https://travis-ci.com/github/danielcliu/youtube-channel-transcript-api) [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](http://opensource.org/licenses/MIT)[![image](https://img.shields.io/pypi/v/youtube-channel-transcript-api.svg)](https://pypi.org/project/youtube-channel-transcript-api/) 
 
 Expand upon the [youtube-transcript-api](https://github.com/jdepoix/youtube-transcript-api) and allow users to easily request all of a channel's (or a playlist's) video caption data. This will require use of [Youtube Data API v3](https://developers.google.com/youtube/v3).
+
+## Install
+
+It is recommended to install this with `pip`
+
+```
+pip install youtube_channel_transcript_api
+```
+If you install from source, you will have to install the dependencies from the Pipfile with `pipenv install`
+For more information on pipenv see [here](https://pipenv.pypa.io/en/latest/)
 
 ## API
 
 Integrate this package into your python 3.6+ application. It is built as a sort of expansion [youtube-transcript-api](https://github.com/jdepoix/youtube-transcript-api). For that reason, that package's warnings/use cases mostly apply to this project as well. 
 
-The package revolves around creating YoutubeChannelTranscript objects, and then using them to obtain all of the caption data from that channel's videos. This package also is built on the YouTube Data API v3, which means to use this you will need to setup your own account and use your own API Key. See [here](https://developers.google.com/youtube/v3/getting-started) for directions how to setup your account if you don't have one.
+The package revolves around creating YoutubeTranscripts objects, and then using them to obtain all of the caption data from that channel/playlist's videos. This package also is built on the YouTube Data API v3, which means to use this you will need to setup your own account and use your own API Key. See [here](https://developers.google.com/youtube/v3/getting-started) for directions how to setup your account if you don't have one.
+
+There are two types of YoutubeTranscripts objects, YoutubeChannelTranscripts and YoutubePlaylistTranscripts
+
+To iniitialze a YoutubePlaylistTranscripts object, you would call like
+
+```python
+YoutubePlaylistTranscripts(<playlist name>, <playlist id>, <youtube data api key>)
+```
 
 To initialize a YoutubeChannelTranscipts object, you would call like
+
 ```python
 YoutubeChannelTranscripts(<youtube channel name>, <youtube data api key>)
 ```
+
+Note: A YoutubeChannelTranscripts object basically searches youtube for the top 5 channels closest to the given name and uses the top match. It creates a YoutubePlaylistTranscripts object with the data it gets back, so the rest of the two classes' functionality are identical. 
+
 You can then either call `get_transcripts()` to return a dictionary of all transcripts and a list of videos that errored, or you can call `write_transcripts()` to write out all of the transcripts to json files at the filepath location.
 
 Here is an example where the package fetches all transcript data from a channel using `get_transcripts()`:
