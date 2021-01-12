@@ -120,7 +120,7 @@ You can also add the `languages` param if you want to make sure the transcripts 
 ```python
 channel_getter = YoutubeChannelTranscripts('A Youtube Channel', 'Youtube Data API Key here')
 
-videos_data, videos_errored = channel_getter.get_transcripts(languages=['de', 'en']))
+videos_data, videos_errored = channel_getter.get_transcripts(languages=['de', 'en'])
 ```
 
 It's a list of language codes in a descending priority. In this example it will first try to fetch the german transcript (`'de'`) and then fetch the english transcript (`'en'`) if it fails to do so.
@@ -177,4 +177,4 @@ In this example, `videos_data` will now look like
 
 ## Warning  
   
- This code, in part, uses an undocumented part of the YouTube API, which is called by the YouTube web-client. So there is no guarantee that it won't stop working tomorrow, if they change how things work. It also uses the Youtube Data API v3, so it is up to you that you are following all of that API's rules. In addition, you will have to worry about managing your own Quota for the YouTube Data API, its resource for limiting calls.  
+ This code, in part, uses an undocumented part of the YouTube API, which is called by the YouTube web-client. So there is no guarantee that it won't stop working tomorrow if they change how things work. It also uses the Youtube Data API v3, so it is up to you that you are following all of that API's rules. In addition, you will have to worry about managing your own Quota for the YouTube Data API, its resource for limiting calls.  
