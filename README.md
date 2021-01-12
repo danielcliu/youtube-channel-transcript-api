@@ -120,7 +120,7 @@ You can also add the `languages` param if you want to make sure the transcripts 
 ```python
 channel_getter = YoutubeChannelTranscripts('A Youtube Channel', 'Youtube Data API Key here')
 
-videos_data, videos_errored = channel_getter.get_transcripts(languages=['de', 'en]))
+videos_data, videos_errored = channel_getter.get_transcripts(languages=['de', 'en']))
 ```
 
 It's a list of language codes in a descending priority. In this example it will first try to fetch the german transcript (`'de'`) and then fetch the english transcript (`'en'`) if it fails to do so.
